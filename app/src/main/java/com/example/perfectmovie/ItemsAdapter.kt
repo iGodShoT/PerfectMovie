@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
 class ItemsAdapter(
-    private val context: Context,
+    private val context: Context?,
     private val items: List<ItemOfList>,
     val listener: (ItemOfList) -> Unit
 ) : RecyclerView.Adapter<ItemsAdapter.ImageViewHolder>() {

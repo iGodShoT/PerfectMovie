@@ -39,36 +39,36 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
      fun GetTopMovies(){
-         val client = OkHttpClient()
-         val connectionString = "https://api.themoviedb.org/3/movie/top_rated?api_key=" + BuildConfig.API_KEY + "&language=ru-RU&page=1"
-         val request = Request.Builder().url(connectionString).build()
-         var list: ArrayList<ItemOfList> = arrayListOf()
-         client.newCall(request).enqueue(object : Callback {
-             override fun onFailure(call: Call, e: IOException) {}
-             override fun onResponse(call: Call, response: Response){
-                 val recyclerView = findViewById<RecyclerView>(R.id.TopMoviesRecyclerView)
-                 var str = response!!.body()!!.string()
-                 var movies = (JSONObject(str).getJSONArray("results"))
-                 for (i in 0 until (movies.length() - 1)) {
-                     var itemOfList: ItemOfList = ItemOfList(
-                         (movies.getJSONObject(i).get("title")).toString(),
-                         (movies.getJSONObject(i).get("overview")).toString(),
-                         (movies.getJSONObject(i).get("vote_average")).toString(),
-                         (movies.getJSONObject(i).get("poster_path")).toString(),
-                         (movies.getJSONObject(i).get("release_date")).toString())
-                     list.add(itemOfList)
-                 }
-                 this@MainActivity.runOnUiThread {
-                     recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
-                     recyclerView.setHasFixedSize(true)
-                     recyclerView.adapter = ItemsAdapter(this@MainActivity, list) {
-                         val intent = Intent(this@MainActivity, DetailActivity::class.java)
-                         intent.putExtra("OBJECT INTENT", it)
-                         startActivity(intent)
-                     }
-                 }
-             }
-         })
+//         val client = OkHttpClient()
+//         val connectionString = "https://api.themoviedb.org/3/movie/top_rated?api_key=" + BuildConfig.API_KEY + "&language=ru-RU&page=1"
+//         val request = Request.Builder().url(connectionString).build()
+//         var list: ArrayList<ItemOfList> = arrayListOf()
+//         client.newCall(request).enqueue(object : Callback {
+//             override fun onFailure(call: Call, e: IOException) {}
+//             override fun onResponse(call: Call, response: Response){
+//                 val recyclerView = findViewById<RecyclerView>(R.id.TopMoviesRecyclerView)
+//                 var str = response!!.body()!!.string()
+//                 var movies = (JSONObject(str).getJSONArray("results"))
+//                 for (i in 0 until (movies.length() - 1)) {
+//                     var itemOfList: ItemOfList = ItemOfList(
+//                         (movies.getJSONObject(i).get("title")).toString(),
+//                         (movies.getJSONObject(i).get("overview")).toString(),
+//                         (movies.getJSONObject(i).get("vote_average")).toString(),
+//                         (movies.getJSONObject(i).get("poster_path")).toString(),
+//                         (movies.getJSONObject(i).get("release_date")).toString())
+//                     list.add(itemOfList)
+//                 }
+//                 this@MainActivity.runOnUiThread {
+//                     recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
+//                     recyclerView.setHasFixedSize(true)
+//                     recyclerView.adapter = ItemsAdapter(this@MainActivity, list) {
+//                         val intent = Intent(this@MainActivity, DetailActivity::class.java)
+//                         intent.putExtra("OBJECT INTENT", it)
+//                         startActivity(intent)
+//                     }
+//                 }
+//             }
+//         })
      }
     fun GetExpectedMovies(){
         val client = OkHttpClient()
