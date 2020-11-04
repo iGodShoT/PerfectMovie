@@ -71,15 +71,15 @@ class TopMovies : Fragment() {
                             (movies.getJSONObject(i).get("release_date")).toString())
                     list.add(itemOfList)
                 }
-                //this@MainActivity.runOnUiThread {
+                activity?.runOnUiThread {
 //                    recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
-                recyclerView.setHasFixedSize(true)
-                recyclerView.adapter = ItemsAdapter(myContext, list) {
-                    val intent = Intent(activity, DetailActivity::class.java)
-                    intent.putExtra("OBJECT INTENT", it)
-                    startActivity(intent)
+                    recyclerView.setHasFixedSize(true)
+                    recyclerView.adapter = ItemsAdapter(myContext, list) {
+                        val intent = Intent(activity, DetailActivity::class.java)
+                        intent.putExtra("OBJECT INTENT", it)
+                        startActivity(intent)
+                    }
                 }
-                //    }
             }
         })
     }
